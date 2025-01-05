@@ -1,0 +1,28 @@
+{
+  "name": "@melvdouc/json-element",
+  "version": "0.1.0",
+  "license": "MIT",
+  "exports": "./src/mod.ts",
+  "publish": {
+    "include": [
+      "./src",
+      "./deno.json",
+      "./LICENSE",
+      "./README.md"
+    ]
+  },
+  "tasks": {
+    "build": "deno run -A scripts/build.ts",
+    "dev": "deno run -A scripts/dev.ts"
+  },
+  "imports": {
+    "$/": "./src/",
+    "esbuild": "npm:esbuild@^0.24.2"
+  },
+  "compilerOptions": {
+    "lib": [
+      "deno.window",
+      "DOM"
+    ]
+  }
+}

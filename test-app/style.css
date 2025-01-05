@@ -1,0 +1,9 @@
+.dict-key {
+  display: inline-block;
+  margin-inline-end: 0.5em;
+  font-weight: bold;
+}
+
+.dict-value {
+  display: contents;
+}
