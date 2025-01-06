@@ -1,13 +1,19 @@
 import { createBranch } from "$/utils.ts";
-import type { JsonValue, JsonBranch } from "$/types.ts";
+import type { JsonValue, JsonBranch } from "$/typings/types.ts";
 
 /**
  * A customizable element for displaying JSON data.
  */
 export default abstract class JsonElement extends HTMLElement {
+  protected readonly _value: JsonValue;
+
   public constructor(value: JsonValue) {
     super();
-    const childNode = this._getChild(createBranch(value, 1));
+    this._value = value;
+  }
+
+  connectedCallback(): void {
+    const childNode = this._getChild(createBranch(this._value, 1));
     this.append(childNode);
   }
 

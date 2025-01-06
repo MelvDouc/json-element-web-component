@@ -39,7 +39,7 @@ class MyJsonElement extends JsonElement {
 
 customElements.define("my-json-element", MyJsonElement);
 
-const element = new JsonElement({
+const element = new MyJsonElement({
   title: "The Three Musketeers",
   publishedYear: 1844,
   authors: [

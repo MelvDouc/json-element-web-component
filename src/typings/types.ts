@@ -1,5 +1,8 @@
 import type BranchKind from "$/BranchKind.ts";
 
+/**
+ * A non-object JSON value.
+ */
 export type JsonPrimitive = string | number | boolean | null;
 /**
  * An indexed collection of values.

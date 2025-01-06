@@ -1,5 +1,5 @@
 import BranchKind from "$/BranchKind.ts";
-import type { JsonValue, JsonBranch } from "$/types.ts";
+import type { JsonElementTypes as JE } from "$/typings/types.public.ts";
 
 /**
  * @param arg Any value.
@@ -14,7 +14,7 @@ export function isObject(arg: unknown): arg is object {
  * @param depth The depth of branch.
  * @returns A `Branch` object with a `kind` property matching the value passed in.
  */
-export function createBranch(value: JsonValue, depth: number): JsonBranch {
+export function createBranch(value: JE.JsonValue, depth: number): JE.JsonBranch {
   if (Array.isArray(value))
     return {
       kind: BranchKind.Array,
