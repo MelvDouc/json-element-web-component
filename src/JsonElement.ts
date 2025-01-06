@@ -18,7 +18,10 @@ export default abstract class JsonElement extends HTMLElement {
   protected abstract _getChild(branch: JsonBranch): Node;
 
   /**
-   * Create a new node from a parent branch and a JSON value. This is typically called when appending an child to a newly created element.
+   * Create a new node from a parent branch and a JSON value.
+   * This is typically called when appending a child to a newly created element.
+   * @param branch The parent branch.
+   * @param value The JSON value of the child branch.
    */
   protected _nextChild(branch: JsonBranch, value: JsonValue): Node {
     return this._getChild(createBranch(value, branch.depth + 1));
