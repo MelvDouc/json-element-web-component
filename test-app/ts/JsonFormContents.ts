@@ -1,7 +1,14 @@
-import { JsonElement, BranchKind, type JsonElementTypes as JE } from "$/mod.ts";
+import {
+  JsonElement,
+  BranchKind,
+  type ArrayBranch,
+  type DictionaryBranch,
+  type JsonBranch
+} from "$/mod.ts";
 
 export default class JsonFormContents extends JsonElement {
-  protected _getChild(branch: JE.JsonBranch) {
+  protected _getChild(branch: JsonBranch) {
+    console.log(branch);
     switch (branch.kind) {
       case BranchKind.Primitive:
         return document.createTextNode(String(branch.value));
@@ -12,22 +19,22 @@ export default class JsonFormContents extends JsonElement {
     }
   }
 
-  private _createArrayList(branch: JE.ArrayBranch) {
+  private _createArrayList(branch: ArrayBranch) {
     const ol = document.createElement("ol");
 
-    branch.value.forEach((value) => {
+    branch.value.forEach((childBranch) => {
       const li = document.createElement("li");
-      li.append(this._nextChild(branch, value));
+      li.append(this._getChild(childBranch));
       ol.append(li);
     });
 
     return ol;
   }
 
-  private _createDictList(branch: JE.DictionaryBranch) {
+  private _createDictList(branch: DictionaryBranch) {
     const ul = document.createElement("ul");
 
-    Object.entries(branch.value).forEach(([key, value]) => {
+    Object.entries(branch.value).forEach(([key, childBranch]) => {
       const li = document.createElement("li");
 
       const keyElement = document.createElement("div");
@@ -36,7 +43,7 @@ export default class JsonFormContents extends JsonElement {
 
       const valueElement = document.createElement("div");
       valueElement.classList.add("dict-value");
-      valueElement.append(this._nextChild(branch, value));
+      valueElement.append(this._getChild(childBranch));
 
       li.append(keyElement, valueElement);
       ul.append(li);

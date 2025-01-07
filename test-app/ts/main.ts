@@ -16,7 +16,10 @@ const testValue = {
   title: "The Three Musketeers",
   publishedYear: 1844,
   authors: [
-    "Alexandre Dumas",
+    {
+      name: "Alexandre Dumas",
+      country: "France"
+    },
     "Auguste Maquet"
   ]
 };

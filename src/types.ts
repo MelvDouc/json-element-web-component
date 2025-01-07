@@ -23,6 +23,11 @@ interface AbstractBranch {
    * How deep into a data tree this branch is found.
    */
   depth: number;
+  /**
+   * The concatenated dictionary keys / array indices of the path
+   * that leads to this object within the data tree.
+   */
+  path: string;
 }
 
 /**
@@ -38,7 +43,7 @@ export interface PrimitiveBranch extends AbstractBranch {
  */
 export interface ArrayBranch extends AbstractBranch {
   kind: BranchKind.Array;
-  value: JsonArray;
+  value: JsonBranch[];
 }
 
 /**
@@ -46,7 +51,7 @@ export interface ArrayBranch extends AbstractBranch {
  */
 export interface DictionaryBranch extends AbstractBranch {
   kind: BranchKind.Dictionary;
-  value: JsonDictionary;
+  value: Record<string, JsonBranch>;
 }
 
 /**

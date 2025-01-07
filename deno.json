@@ -1,6 +1,6 @@
 {
   "name": "@melvdouc/json-element",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "license": "MIT",
   "exports": "./src/mod.ts",
   "publish": {
@@ -13,10 +13,12 @@
   },
   "tasks": {
     "build": "deno run -A scripts/build.ts",
-    "dev": "deno run -A scripts/dev.ts"
+    "dev": "deno run -A scripts/dev.ts",
+    "gen-docs": "deno run -RW scripts/gen-docs.ts"
   },
   "imports": {
     "$/": "./src/",
+    "@std/path": "jsr:@std/path@^1.0.8",
     "esbuild": "npm:esbuild@^0.24.2"
   },
   "compilerOptions": {

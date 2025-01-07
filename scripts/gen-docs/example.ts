@@ -1,11 +1,4 @@
-# JsonElement
-
-Create a customizable element out of JSON data.
-
-## Usage
-
-```ts
-import { BranchKind, JsonElement, type JsonBranch } from "@melvdouc/json-element";
+import { BranchKind, JsonElement, type JsonBranch } from "$/mod.ts";
 
 class MyJsonElement extends JsonElement {
   protected override _getChild(branch: JsonBranch): HTMLElement | Text {
@@ -43,30 +36,12 @@ const element = new MyJsonElement({
   title: "The Three Musketeers",
   publishedYear: 1844,
   authors: [
-    "Alexandre Dumas",
+    {
+      name: "Alexandre Dumas",
+      country: "France"
+    },
     "Auguste Maquet"
   ]
 });
 
 document.body.append(element);
-```
-
-outputs:
-
-```html
-<my-json-element>
-  <dl>
-    <dt>title</dt>
-    <dd>The Three Musketeers</dd>
-    <dt>publishedYear</dt>
-    <dd>1844</dd>
-    <dt>authors</dt>
-    <dd>
-      <ol>
-        <li>Alexandre Dumas</li>
-        <li>Auguste Maquet</li>
-      </ol>
-    </dd>
-  </dl>
-</my-json-element>
-```
